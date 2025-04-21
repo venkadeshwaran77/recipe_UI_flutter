@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:recipe_ui/categories.dart';
 import 'package:recipe_ui/colors.dart';
+import 'package:recipe_ui/items_details_screen.dart';
 import 'package:recipe_ui/recipe_model.dart';
 
 class HomeScreenRecipe extends StatefulWidget {
@@ -70,7 +71,13 @@ padding:index ==0
 ? EdgeInsets.only(left:20,right:10)
 : EdgeInsets.only(right:10),
 child:GestureDetector(
-onTap:(){},
+onTap:(){
+Navigator.push(context,
+MaterialPageRoute(
+builder:(_)=>ItemsDetailsScreen(recipeItems:recipe), 
+),
+);
+},
 child:Container(
 height:260,
 width:MediaQuery.of(context).size.width /2.45,
