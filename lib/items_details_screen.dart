@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:recipe_ui/ingredients.dart';
 import 'package:recipe_ui/recipe_model.dart';
 
 class ItemsDetailsScreen extends StatefulWidget {
@@ -180,7 +181,78 @@ percentage:"(56%)",
 color:Colors.green, 
 data:0.4, 
 ),
+MyProgressIndicatorValue(
+color: Colors.red,
+name: 'Fat',
+amount: '${widget.recipeItems.fat} g',
+percentage: '(72%)',
+data: 0.6,
+),
+MyProgressIndicatorValue(
+color: Colors.orange,
+name: 'Protein',
+amount: '${widget.recipeItems.protein} g',
+percentage: '(8%)',
+data: 0.2,
+),
+MyProgressIndicatorValue(
+color: Colors.green,
+name: 'Calories',
+amount: '${widget.recipeItems.calorie} kkal',
+percentage: "",
+data: 0.7,
+),
 ],
+),
+SizedBox(height: 25),
+Row(
+mainAxisAlignment: MainAxisAlignment.spaceBetween,
+children: [
+Text(
+"Ingredients",
+style: TextStyle(
+fontSize: 20,
+fontWeight: FontWeight.w600,
+),
+),
+Text(
+"See all",
+style: TextStyle(
+fontSize: 14,
+color: Colors.green,
+  fontWeight: FontWeight.w500,
+),
+),
+],
+),
+SizedBox(height: 20),
+Row(
+mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+children: List.generate(
+ingredients.length,
+(index) => Column(
+children: [
+CircleAvatar(
+radius: 30,
+backgroundColor:ingredients[index].color,
+child: Image.asset(
+ingredients[index].image,
+height: 40 ,
+width: 40,
+),
+),
+SizedBox(height: 5),
+Text(
+ingredients[index].name,
+style: const TextStyle(
+fontSize: 12,
+fontWeight: FontWeight.bold,
+color: Colors.black38,
+),
+),
+],
+),
+),
 ),
 ],
 ),
@@ -225,7 +297,7 @@ color:Colors.white,
 ),
 ],
 ),
-),
+)
 );
 }
 }
